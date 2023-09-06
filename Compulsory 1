@@ -1,0 +1,10 @@
+// Compulsory 1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream> //Because it just won't do it otherwise.
+
+int main() //this is where code starts and ends. You need to include all the libraries (including obligatory iostream) before we begin. 
+{ //Start of the main (readable script).
+    std::cout << "Hello World!\n"; //std:: - Visual Studio's obligatory requirement, because C++ is extremely quirky. 
+    //cout - command to print out message in console Command reads what it needs to read thanks to <<. " " indicate what to read. \n indicates that next output will start from the next line. 
+} //End of the main (readable script).
