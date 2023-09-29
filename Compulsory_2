@@ -1,0 +1,189 @@
+// CompulsoryWizard.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <cmath>
+double cal1 = 0, cal2 = 0, calres = 0; //for calculator in option 3
+    
+    int result = 0; //for option 1
+    int Factorial(long int n) {
+        if (n <= 1) {
+            return 1;
+        }
+        else {
+            result = n * Factorial(n-1);
+            return result;
+        }
+    }
+    //for option 1.
+
+
+int main()
+{
+    long int n = 0; //can't handle numbers too high, so Lolong it is.
+
+
+    int i = 0, j = 0;//for option 2
+    //int i = 0;
+    int poly1[4];
+    int poly2[4];
+    int polymix[7];
+    for (i = 0; i < 7; i++) {
+        polymix[i] = 0;
+    }
+
+
+    int mchoice = 0; // For menu in option 3
+    
+    ///------------------------------------------------
+
+    std::cout << "Hello, hello. Wizard is operating.\n";
+    std::cout << "You are about to enter the not-so-simple calculator menu.\nI will show you around.\n";
+    std::cout << "The Wizard will try and stop you if you do what the program is not intended to process,\nbut does not guarantees that would be able to.\n";
+        std::cout << "                                              \n";
+        std::cout << "   *    . . . .-. .   .-. .-. .  . .-.     *  \n";
+        std::cout << "        | | | |-  |   |   | | ||/| |-         \n";   // Because code has to look nice, that's why.
+        std::cout << "      * `.'.' `-' `-' `-' `-' '  ` `-' *      \n";
+        std::cout << "                      *                       \n";
+    int choice;
+    do {
+        std::cout << "                                              \n";
+        std::cout << "                                            * \n";
+        std::cout << "   *                                          \n";
+        std::cout << "                             *                \n";
+        std::cout << "                 *                            \n";
+        std::cout << "                                      *       \n";
+        std::cout << "         *                                    \n";
+        std::cout << "                                              \n";
+        std::cout << "  Please select one of the following options: \n";
+
+        std::cout << "  1: Factorize\n  2: Multiply third-grad polynomes\n  3: Calculate\n  4: End wizard session\n";
+
+        std::cout << "\n> Enter your selection (1, 2,3 or 4): ";
+        std::cin >> choice;
+        switch (choice)
+        {
+            ///////////////////////////////////////////////////////////////////
+        case 1:
+            std::cout << "\n * * *             *  *  *            * * * \n";
+            std::cout << "       Very well, Factorial it is.\n";
+            std::cout << "  Factorial, commonly used to calculate the probability,\n  gives you the multiplication of all the instances\n  of a whole positive number.\n  If you understand it, operating this calculator should be easy.\n";
+            std::cout << "> Enter your number : ";
+            std::cin >> n;
+            if (n>=0) {
+                
+                Factorial(n);
+                std::cout << "\n ...let me see...\n  Your result is : " << result<<".\n  Very well.";
+
+            }
+            else {
+                std::cout << "\n  Ope! You messed this up.";
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); ///Our lord and savior. Thanks to Nicole Biene.
+            }
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "\n\n  Returning to the Main Menu...\n";
+            break;
+            ///////////////////////////////////////////////////////////////////
+        case 2:
+            std::cout << " \n* * *             *  *  *            * * * \n";
+            std::cout << "       Very well, Polynomes it is.\n";
+            std::cout << "  Third-grade polynomial consists of\n  four whole numbers.\n  You will now print them one by one.\n  If you understand it, operating this calculator should be easy.\n";
+            for (i = 0; i < 4; i++) {
+                std::cout << "\n> Enter your " << i+1 << " number : \n";
+                std::cin >> poly1[i];
+            }
+            std::cout << "\n  Your function will now look like this :\n  "<< poly1[0] <<"x^3 + "<<poly1[1]<<"x^2 + "<<poly1[2]<<"x + "<<poly1[3]<<".";
+            std::cout << "\n\n> Enter your second set of numbers : \n";
+            for (i = 0; i < 4; i++) {
+                std::cout << "\n> Enter your " << i + 1 << " number : \n";
+                std::cin >> poly2[i];
+            }
+            std::cout << "\n  Your second function will look like this :\n  " << poly2[0] << "x^3 + " << poly2[1] << "x^2 + " << poly2[2] << "x + " << poly2[3] << ".";
+            //----------------------------------------------
+            std::cout << "\n\n  Now watch as the magic unfolds.\n\n"; // FIX THIS. It needs to be done by double function.(pg 3).
+            for (i = 0; i < 7; i++) {
+                polymix[i] = 0;
+            }
+            for (i = 0; i < 4; i++) {
+                for (j = 0; j < 4; j++) {
+                    polymix[i+j] += poly1[i] * poly2[j];
+                }
+            }
+            //polymix[0] = poly1[0] * poly2[0];
+            //polymix[1] = poly1[0] * poly2[1] + poly1[1] * poly2[0];
+            //polymix[2] = poly1[0] * poly2[2] + poly1[1] * poly2[1] + poly1[2] * poly2[0];
+            //polymix[3] = poly1[0] * poly2[3] + poly1[1] * poly2[2] + poly1[2] * poly2[1] + poly1[3] * poly2[0];
+            //polymix[4] = poly1[1] * poly2[3] + poly1[2] * poly2[2] + poly1[3] * poly2[1];
+            //polymix[5] = poly1[3] * poly2[1] + poly1[1] * poly2[3];
+            //polymix[6] = poly1[3] * poly2[3];
+            std::cout << "  Here's your final function :\n  " << polymix[0] << "x^6 + " << polymix[1] << "x^5 + " << polymix[2] << "x^4 + " << polymix[3] << "x^3 + " << polymix[4] << "x^2 + " << polymix[5] << "x + " << polymix[6] << ".";
+
+
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+            ///////////////////////////////////////////////////////////////////
+        case 3:
+            std::cout << "\n * * *             *  *  *            * * * \n";
+            std::cout << "      Very well, Calculation it is.\n";
+
+            std::cout << "  Calculator performs basic math operations,\n  such as addition, mutiplication, substraction and division.\n  It is used to calculate the salary of elves running your computer..\n  If you understand it, operating this calculator should be easy.\n";
+            std::cout << "> Insert your first value  (money) : \n";
+            std::cin >> cal1;
+            std::cout << "> Insert your second value (elves) : \n";
+            std::cin >> cal2;
+            std::cout << "  Now decide what to do with these numbers.\n";
+            std::cout << "  1: Divide money by elves\n  2: Multiply money by elves\n  3: Add money to elves\n  4: Substract elves from the money\n  5: Find out the percent of elves per money\n";
+            std::cout << "\n> Enter your selection (1, 2,3, 4 or 5): ";
+            std::cin >> mchoice;
+            switch (mchoice) {
+            case 1:
+                std::cout << "If you were to divide money by elves, you would give " << cal1 / cal2 << " each.";
+                break;
+            case 2:
+                std::cout << "If you were to give each elf "<<cal1<<", you would have to spend a total of " << cal1*cal2 << ".";
+                break;
+            case 3:
+                std::cout << "Adding money to elves would result in " << cal1 + cal2 << ".";
+                break;
+            case 4:
+                std::cout << "Substracting money from elves would result in " << cal1 - cal2 << ".";
+                break;
+            case 5:
+                calres = ((cal1 / cal2) / cal1) * 100;
+                std::cout << "If you were to give out all this money to elves, each elf would recieve " << calres << "%."; //why the fuck is it not working? -- because division requires doubles without casting.
+                break;
+            }
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+            ///////////////////////////////////////////////////////////////////
+        case 4:
+            std::cout << "\n * * *             *  *  *            * * * \n";
+            std::cout << "        Very well. I bid you farewell.\n";
+            std::cout << " * * *             *  *  *            * * * \n";
+            break;
+            ///////////////////////////////////////////////////////////////////
+        default:
+            std::cout << "\n * ? *             *  ?  *            *  ?  * \n";
+            std::cout << "  Hey, now. I might be a wizard, but I can't just guess what you want. \n  Your selection must be between 1 and 4!\n";
+            std::cin.clear();                 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+
+    } while (choice != 4); //Menu operator.
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
